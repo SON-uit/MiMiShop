@@ -1,0 +1,17 @@
+.form-control{
+    height: 50px !important;
+    background-color: #f2f2f2 !important;
+}
+.form-control:focus{
+    background-color: white  !important  ;
+}
+.text{
+    color: red !important;
+}
+.heading-register{
+    font-size: 54px;
+    font-weight: 700;
+    line-height: initial;
+    position: absolute;
+    left: 25%;
+}  

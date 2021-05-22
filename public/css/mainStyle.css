@@ -1,0 +1,39 @@
+.pro-name{
+    font-weight: bold ;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 17px;
+}
+.pro-price{
+    color:#f94c43;
+    font-weight: bold;
+}
+*{
+    font-family:'Quicksand', sans-serif!important;
+    margin: 0;
+    padding: 0;
+}
+a , button{
+    text-decoration: none;
+}
+.fa ,.fas{
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+.col-md-2dot4{
+    width: 18%;
+    display: inline;
+    margin-left: 2%;
+    margin-top: 30px;
+}
+.card-body {
+    padding: 0.5rem !important;
+}
+.card-body >p {
+    margin-top: 0.5rem !important;
+}
+p{
+   
+    margin-bottom: 0 !important;
+}
