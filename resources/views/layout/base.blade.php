@@ -88,36 +88,38 @@
                     </div>
                 </div>
             </div>
-            <div id="change-item-cart" >
+            <div id="change-item-cart">
                 @if(Session::has('Cart') != null)
                 <div class="row">
                     <div class="col-md-5 offset-md-6 pos">
                        <div class="cart" id="cart-dropdown">
-                           <span class="icon-cart"><i class="fas fa-sort-up" style="font-family :Font Awesome 5 Free"></i></span>
+                           <span class="icon-cart"><i class="fas fa-sort-up"></i></span>
                            <div class="header-cart">
                                <p>Giỏ hàng </p>
                            </div>
                            <div class="body-cart">
                                @foreach (Session::get('Cart')->products as $item)
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <img src="images/products/store/{{ $item['productinfo']->image }} " width="100%">
                                         </div>
-                                        <div class="col-md-10 mt-4">
-                                            <div class="row">
-                                                <div class="col-md-9" style="background: red;">
-                                                    <p>{{ $item['productinfo']->name }}</p>
-                                                </div>
-                                                <div class="col-md-3" style="background: yellow;">
-                                                    <div class="delete-icon">
+                                        <div class="col-md-9 mt-4">
+                                            <div class="">
+                                                <div style="display:flex;justify-content: space-between;">
+                                                    <div style="font-size:17px;font-weight:600">
+                                                        <p>{{ $item['productinfo']->name }}</p>
+                                                    </div>
+                                                    <div class="delete-icon" style="font-size:17px;font-weight:600">
                                                         <i class="far fa-trash-alt" data-icon="{{ $item['productinfo']->id }}"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9" style="background: red;">
-                                                    <p>{{ $item['quanty'] }}</p>
-                                                </div>
-                                                <div class="col-md-3" style="background: yellow;">
-                                                    <p>{{ $item['productinfo']->price }}đ</p>
+                                                <div style="display: flex;justify-content: space-between;">
+                                                    <div  style="font-size:17px;font-weight:600">
+                                                        <p>{{ $item['quanty'] }}</p>
+                                                    </div>
+                                                    <div  style="font-size:17px;font-weight:600">
+                                                        <p>{{ $item['productinfo']->price }}đ</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,10 +128,14 @@
                                @endforeach
                             </div>
                            <div class="footer-cart">
-
-                               <p> Tổng tiền: {{ number_format(Session::get('Cart')->totalPrice) }}đ</p><br>
-                               <a href="http://localhost/webshop/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
-                               <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">Thanh toán</a>
+                               <div style="display: flex;justify-content: space-between;">
+                               <h4> Tổng tiền: </h4>
+                                   <div><h4>{{ number_format(Session::get('Cart')->totalPrice) }}đ </h4></div><br>
+                               </div>
+                               <div class="thanhtoan">
+                                <a  href="http://localhost/webproject/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
+                                <a href="#" class="btn btn-primary">Thanh toán</a>
+                               </div>
                            </div>
                        </div>
                     </div>
