@@ -20,8 +20,8 @@
   <body >
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
@@ -66,7 +66,7 @@
                                     @else
                                         <span id="total-quanty-show">0</span>
                                     @endif
-                                </i> 
+                                </i>
                             </div>
                         </div>
                         <div class="col-md-5" id="user-menu">
@@ -75,7 +75,7 @@
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                    <span>HI,{{ Session::get('user')->name }}</span>
                                 </button>
-                               
+
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                   <a href="http://localhost/webshop/public/ListCart"><button class="dropdown-item" type="button">Giỏ hàng</button></a>
                                   <button class="dropdown-item" type="button">Logout</button>
@@ -84,7 +84,7 @@
                             </div>
                             @endif
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                                @endforeach
                             </div>
                            <div class="footer-cart">
-                              
+
                                <p> Tổng tiền: {{ number_format(Session::get('Cart')->totalPrice) }}đ</p><br>
                                <a href="http://localhost/webshop/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
                                <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">Thanh toán</a>
@@ -273,7 +273,7 @@
                         Chính sách vận chuyển, giao hàng
                         Chính sách bảo hành
                         Chính sách đổi/trả hàng và hoàn tiền
-                        Chính sách bảo mật thông tin</p>
+                        Chính sách bảo mật thông tin klfgakf;lakfl;akgal;gka;lgkagoagkapgkaopgka</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Thông tin liên hệ</h5>
@@ -296,6 +296,6 @@
        return $.get(path, {query:query} ,function (data) {
               return ( process(data));
        });
-    }}) 
-  </script>  
+    }})
+  </script>
 </html>
