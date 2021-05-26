@@ -33,9 +33,10 @@ class UserController extends Controller
         $profile = User::select('name','email')->where('email',$email)->first();
        if(Auth::attempt(['email' => $email, 'password' => $password])){
             $request->session()->put('user', $profile);
-             return "Login thanh cong";
+             return true;
         }else{
-            return "LoginFail";
+            $request->session()->forget('user');
+            return false;
         }
     }
 }

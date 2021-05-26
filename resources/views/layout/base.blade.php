@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Header-View</title>
+    <title>ShopNO1</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,6 @@
     <!--Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <!--CSS -->
-
     <link rel ="stylesheet"  href="{{ URL::asset('css/baseStyle.css') }}">
     <link rel ="stylesheet"  href="{{ URL::asset('css/mainStyle.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
@@ -25,6 +24,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     {{-- file JS cua bladeView --}}
     <script type="module" src="{{ URL::asset('js/validator.js') }}"></script>
     <script   src="{{ URL::asset('js/baseJS.js') }}"></script>
@@ -32,8 +32,9 @@
    {{--  <script   src="{{ URL::asset('js/listcart.js') }}"></script> --}}
     <script>
        var tmp = 0;
-       $(window).scroll(function () { 
+       $(window).scroll(function () {
            var currentPos = $(this).scrollTop();
+           $("#cart-dropdown").removeClass("dropdown-cart-items");
            if(currentPos >= tmp || currentPos === 0 ){
                $("#scroll-header").removeClass("onscroll-header");
                $('#space-top').removeClass("demo");
@@ -49,21 +50,41 @@
     <header id="scroll-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-3 offset-md-4">
                     <img src="logos/logo-mimigame.jpg" alt="MiniGame_logo" width="100%">
                 </div>
-                <div class="col-md-4">
-                    <div class="header-icon">
-                        <input type="text" class="typeahead" placeholder="search...">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                        <i class="fa fa-user"  id="user-icon"></i>
-                        <i class="fa fa-shopping-cart" id="cart-icon">
-                            @if(Session::has("Cart") !=null)
-                                <span id="total-quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
-                            @else
-                                <span id="total-quanty-show">0</span>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="header-icon">
+                                <input type="text" class="typeahead " placeholder="search...">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <i class="fa fa-user"  id="user-icon"></i>
+                                <i class="fa fa-shopping-cart" id="cart-icon">
+                                    @if(Session::has("Cart") !=null)
+                                        <span id="total-quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
+                                    @else
+                                        <span id="total-quanty-show">0</span>
+                                    @endif
+                                </i> 
+                            </div>
+                        </div>
+                        <div class="col-md-5" id="user-menu">
+                            @if (Session::has('user') != null)
+                            <div class="dropdown" style="margin-top: 35px">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                   <span>HI,{{ Session::get('user')->name }}</span>
+                                </button>
+                               
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                  <a href="http://localhost/webshop/public/ListCart"><button class="dropdown-item" type="button">Giỏ hàng</button></a>
+                                  <button class="dropdown-item" type="button">Logout</button>
+                                  <button class="dropdown-item" type="button">Something else here</button>
+                                </div>
+                            </div>
                             @endif
-                        </i>  
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -267,5 +288,14 @@
             </div>
         </div>
     </footer>
-  </body>  
+  </body>
+  <script>
+    var path ="{{ route('autocomplete') }}";
+    $("input.typeahead").typeahead({
+       source: function (query,process){
+       return $.get(path, {query:query} ,function (data) {
+              return ( process(data));
+       });
+    }}) 
+  </script>  
 </html>

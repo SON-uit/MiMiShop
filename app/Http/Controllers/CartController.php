@@ -24,7 +24,7 @@ class CartController extends Controller
             $request->session()->put('Cart',$newCart);
         }
     return  view('cart');
-}
+    }
     public function DeleteItems_Cart(Request $request ,$id){    
         $oldCart = Session('Cart') ? Session('Cart') :null;
         $newCart = new Cart($oldCart);
@@ -95,9 +95,8 @@ class CartController extends Controller
                 'price'  => $productPrice,
                 ]);
           $newbill->products()->attach($list,['quanty']);
-            }
+        }
           return back()->with('bill','Order Successfully!');       
- 
     }
 }
 

@@ -92,36 +92,7 @@
            reader.readAsDataURL(file);
          }
        }
-      // test ajax su dung json
-/*       $("#productform").submit(function (e) { 
-        e.preventDefault();
-        let nameproduct =$("#name").val();
-        let descrip = $("#description").val();
-        let status = $("#status").val();
-        let price = $("#price").val();
-        let unit = $("#unit").val();
-        let slug = $("#slug").val();
-        let classify = $("#classify").val();
-        let category = $("#category").val();
-        let image = $("#image").val();
-        $.ajax({
-          url: "{{ route('test_json') }}",
-          type: "POST",
-          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-          data: {
-            name:nameproduct,
-            description :descrip,
-            status : status,
-            price :price,
-            unit :unit,
-            classify :classify,
-            category :category,
-            image :image
-          },
-          success: function (response) {
-             console.log(response);
-          }
-      ; */
+   
    </script>
   </body>
 </html>

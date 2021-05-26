@@ -10,7 +10,9 @@ function cartdropdown(id){
                RenderCart(response);
             }
         });
+        $("#scroll-header").addClass("onscroll-header");
     });
+    
 }
 //xoa san pham o cart
 $(document).ready(function () {
@@ -23,7 +25,7 @@ $(document).ready(function () {
                 success: function (response) {
                     RenderCart(response);          
                 }
-            });
+            }); 
     });
 });
 function RenderCart(response){
@@ -44,15 +46,7 @@ $(document).ready(function () {
         $("#login-card").toggleClass("dropdown-login-form");
     });
 });
-/// typeahead
-/* var path ="{{ route('autocomplete') }}";
-    $("input .typeahead").typeahead({
-   source: function(terms,process){
-       return $.get(path,{terms:terms},function (data) {
-               return process(data);
-       });
-    }
-}); */
+
 $(document).ready(function () {
     $("#test").hover(function () {
           var link = ( $(this).data('link'));
