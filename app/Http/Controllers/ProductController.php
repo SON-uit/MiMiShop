@@ -74,7 +74,6 @@ class ProductController extends Controller
     }
     public function storePhotos(Request $request){
         $product = product::find($request->product_id);
-       // $productPhotos = new productPhotos();
         foreach($request->photos as $photo){
             $productPhotos = new productPhotos();
             $photoName =time().'.'. $photo->getClientOriginalExtension();
@@ -103,11 +102,10 @@ class ProductController extends Controller
 
     } */
     public function autocomplete(Request $request){
-        dd($request);
         $data =product::select('name')
-                        ->where("name","LIKE","%{$request->terms}%")
+                        ->where("name","LIKE","%{$request['query']}%")
                         ->get();
-        return response()->json($data);
+        return $data;
     }
     public function slugView($slug){
         $product = product::where('slug', $slug)->first();

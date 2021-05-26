@@ -10,6 +10,5 @@ class Collection extends Controller
         $data = type_product::all()->where('slug', $slug)->first();
         $typeproduct = type_product::all();
         return view('typeproductDetails',compact('data','typeproduct'));
-      
     }
 }

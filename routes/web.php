@@ -59,7 +59,7 @@ Route::get('DeleteListCart/{id}',[CartController::class,'DeleteListItems_Cart'])
 Route::get('EditListCart/{id}/{quanty}',[CartController::class,'EditListItems_Cart'])->name('editList_cart');
 Route::get('checkout',[CartController::class,'checkout'])->name('checkout');
 Route::post('check/checkout',[CartController::class,'check_checkout'])->name('check_checkout')->middleware('UserMiddleware');
-Route::post('testjson',[ProductController::class,'testjson'])->name('test_json');// test ajax su dung json
+//Route::post('testjson',[ProductController::class,'testjson'])->name('test_json');// test ajax su dung json
 // Autocomplete Typehead
 Route::get('autocomplete',[ProductController::class,'autocomplete'])->name('autocomplete');
 /* Route::get('test',(function(){

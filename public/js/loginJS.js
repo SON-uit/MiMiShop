@@ -15,14 +15,21 @@ Validator({
         },
         dataType: "html",
         success: function (response) {
-            alert(response);
+          if(response==true){
+            alert("Dang nhap thanh cong");
+            window.location.reload();
             $("#login-card").hide();
             $(document).ready(function () {
               $("#user-icon").click(function (e) { 
                   e.preventDefault();
                   $("#login-card").hide();
               });
-          });
+            });
+         
+          }else{
+            alert("Dang nhap that bai");
+            window.location.reload();
+          }
         }
       });
     }
