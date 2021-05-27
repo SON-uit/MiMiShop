@@ -7,7 +7,7 @@ use App\Models\productPhotos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
-
+use Illuminate\Support\Facades\View;
 class ProductController extends Controller
 {
     public function create(){
@@ -85,33 +85,33 @@ class ProductController extends Controller
         return back()->with('product_photos', count($request->photos).' photos has been edited successfully!');
 
     }
-    //test ajax su dung json
-   /*  public function testjson(Request $request){
-        $product = new product();
-        $product->name = $request->name;
-        $product->id_type = 1;
-        $product->description =$request->description;
-        $product->price = $request->price;
-        $product->status =$request->status;
-        $product->image ="image";
-        $product->unit = $request->unit;
-        $product->slug = "slug";
-        $product->classification ="game";
-        $product->save();
-        return response()->json($product);
-
-    } */
     public function autocomplete(Request $request){
-        $data =product::select('name')
-                        ->where("name","LIKE","%{$request['query']}%")
+        $data =product::select('name','image')
+                        ->where("name","LIKE","%{$request['term']}%")
                         ->get();
-        return $data;
+        return response()->json($data);
     }
     public function slugView($slug){
         $product = product::where('slug', $slug)->first();
         return view('productDetails',compact('product'));
     }
-    public function testImg(){
-        return view('multipleImg');
+    public function classify(Request $request){
+        $temp = $request->categories;
+        $type = $request->type;
+         if($type=='phụ'){
+            $type = 'phụ kiện';
+        } 
+        $temp = (int)$temp[count($temp)-1];
+        $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                    ->where([
+                                        ['type_products.name',"PlayStation5"],
+                                        ['products.classification',$type],
+                                        ['price',"<",$temp],
+                                    ])
+                                    ->select('products.name','products.image','price','products.slug','products.id','products.classification',)
+                                    ->get();
+        return $data;
+       
     }
+    
 }

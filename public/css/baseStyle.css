@@ -277,9 +277,18 @@ footer{
     /* dung tai diem ket thuc */
 
 }
-
 @keyframes show {
     100%{
         transform: translateX(100%);
     }
+}
+.empty-cart img{
+    position: relative;
+    left: 45%;
+    width: 10%;
+}
+.empty-cart p{
+    margin-top :20px;
+    text-align: center;
+    
 }

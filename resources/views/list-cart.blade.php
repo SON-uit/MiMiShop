@@ -1,9 +1,8 @@
 
-
     @extends('layout/base')
     @section('ListCart')
     <section>
-        <script   src="{{ URL::asset('js/listcart.js') }}"></script>
+        <script  src="{{ URL::asset('js/listcart.js') }}"></script>
         <link rel ="stylesheet"  href="{{ URL::asset('css/list-cartStyle.css') }}">
         <div id="list-cart">
             <div class="container-fluid">
@@ -41,6 +40,8 @@
                                             <td><i class="fas fa-trash" onclick="DeleteListItemCart({{ $item['productinfo']->id }})"></i></td>
                                         </tr>
                                     @endforeach
+                                @else
+                                    <h3 class="text-empty-cart">Giỏ hàng của bạn đang trống</h3>
                                 @endif
                             </tbody>
                             <tfoot>            
@@ -53,7 +54,13 @@
                                 Thông tin đơn hàng
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Tổng tiền:<span style="margin-left: 20px; color:red;"> {{ number_format(Session::get('Cart')->totalPrice) }}đ</span></h5>
+                                <h5 class="card-title">Tổng tiền:  
+                                @if(Session::has('Cart') != null)
+                                <span style="margin-left: 20px; color:red;"> {{ number_format(Session::get('Cart')->totalPrice) }}đ</span>
+                                @else
+                                <span style="margin-left: 20px; color:red;"> 0đ</span>
+                                @endif
+                                </h5>
                                 <p class="card-text">Phí vận chuyển sẽ được tính ở trang thanh toán.</p>
                                 <p class="card-text">Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
                             </div>
@@ -89,7 +96,7 @@
         </div>
     </section>
     @endsection
-   </body>
+
 
 
 
