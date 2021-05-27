@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Collection;
 use App\Models\product;
+use App\Models\type_product;
 use App\Models\type_products;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\DB;
@@ -59,25 +60,19 @@ Route::get('DeleteListCart/{id}',[CartController::class,'DeleteListItems_Cart'])
 Route::get('EditListCart/{id}/{quanty}',[CartController::class,'EditListItems_Cart'])->name('editList_cart');
 Route::get('checkout',[CartController::class,'checkout'])->name('checkout');
 Route::post('check/checkout',[CartController::class,'check_checkout'])->name('check_checkout')->middleware('UserMiddleware');
-//Route::post('testjson',[ProductController::class,'testjson'])->name('test_json');// test ajax su dung json
 // Autocomplete Typehead
 Route::get('autocomplete',[ProductController::class,'autocomplete'])->name('autocomplete');
-/* Route::get('test',(function(){
-    return view('layout/myCart');
-})); */
-/* Route::get('collection/{slug}',[Collection::class ,'slugLink'])->name('collection') */;
 Route::get('product/{slug}',[ProductController::class,'slugView'])->name('product/{slug}');
 // Images
-Route::get('images/create',[ProductController::class,'testImg'])->name('test/Img');
-//tesst
-
+//Route::get('images/create',[ProductController::class,'addImgs'])->name('test/Img');
+Route::get('price-classify',[ProductController::class,'classify'])->name('classify');
 Route::get('collection/may-ps-5',function(){
     $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
                                  ->where([
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"máy"]
                                  ])
-                                 ->select('products.name','products.image','price','products.slug','products.id','products.classification',)
+                                 ->select('products.name','products.image','price','products.slug','products.id','products.classification','type_products.id')
                                  ->get();
     $img = 'may-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));

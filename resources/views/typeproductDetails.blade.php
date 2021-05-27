@@ -1,5 +1,7 @@
 @extends('layout/base')
 @section("typeProduct")
+<section>
+    <script  src="{{ URL::asset('js/classify.js') }}"></script>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -12,31 +14,31 @@
                     <h3>Giá sản phẩm</h3>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="price-classify" id="helo" value="499999" >
+                        <input type="checkbox" class="form-check-input" name="price-classify[]" id="helo" value="499999" >
                         Dưới 500,000đ
                       </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify" id="" value="999999" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="999999" >
                           500,000đ - 1,000,0000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify" id="" value="1499999" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="1499999" >
                           1,000,000đ - 1,500,000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify" id="" value="4999999" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="4999999" >
                           2,000,000đ - 5,000,000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify" id="" value="5000000" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="50000000" >
                           Trên 5,000,000đ
                         </label>
                     </div>
@@ -44,14 +46,14 @@
             </div>
             <div class="col-md-8 " >
                 <div class="col-md-12 mb-5">
-                    <h2>{{ Str::upper( $data[0]->classification )}} PS5</h2>
+                    <h2 id="type" value={{( $data[0]->classification )}}>{{ Str::upper( $data[0]->classification )}}<span> PS5</span></h2>
                 </div>
-                <div class="row">
+                <div class="row pricesort">
                     @foreach ($data as $item)
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="col-md-12">
-                                <a href=" {{ url('product/'. $item->slug )}}"><img src="images/products/store/{{ $item->image  }}" alt="{{ $item->name }}" width="100%"></a>
+                                    <a href=" {{ url('product/'. $item->slug )}}"><img src="images/products/store/{{ $item->image  }}" alt="{{ $item->name }}" width="100%"></a>
                                 </div>
                                 <div class="card-body">
                                     <p class="pro-name">{{ $item->name }}</p>
@@ -65,11 +67,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $("input[type=checkbox]").click(function(){
-                console.log($(this).val());
-            });
-        });
-    </script>
+</div>
+</section>
 @endsection

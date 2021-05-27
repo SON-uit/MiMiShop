@@ -10,3 +10,8 @@ input[name="quanty"]{
 .qty-btn{
     font-size: 20px;
 }
+.text-empty-cart{
+    position: relative;
+    top:150px;
+    left:300px;
+}

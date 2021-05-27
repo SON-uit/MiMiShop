@@ -65,10 +65,10 @@
                         <td> Giá :{{ number_format($item['productinfo']->price) }} vnd</td><br>
                     </tr>
                 @endforeach
-                @endif
                 <div class="total">
                     <p>Tổng cộng <span>{{ number_format(Session::get('Cart')->totalPrice) }} vnd</span></p>
                 </div>
+                @endif
               </div>
           </div>
       </div>

@@ -86,7 +86,7 @@ class CartController extends Controller
         ////danh sach id san pham trong gio hang
         $list =[];
         $productsInCart = $request->session()->get('Cart')->products;
-       foreach($productsInCart as $product=>$val){
+        foreach($productsInCart as $product=>$val){
             $productID=$val['productinfo']->id;
             $productQuanty = $val['quanty'];
             $productPrice = $val['price'];
@@ -95,7 +95,8 @@ class CartController extends Controller
                 'price'  => $productPrice,
                 ]);
           $newbill->products()->attach($list,['quanty']);
-        }
+        };
+        $request->Session()->forget('Cart');
           return back()->with('bill','Order Successfully!');       
     }
 }
