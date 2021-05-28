@@ -14,31 +14,31 @@
                     <h3>Giá sản phẩm</h3>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" name="price-classify[]" id="helo" value="499999" >
+                        <input type="checkbox" class="form-check-input" name="price-classify[]" id="" data-min="0" data-max="500000">
                         Dưới 500,000đ
                       </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="999999" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" data-min="500000" data-max="1000000">
                           500,000đ - 1,000,0000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="1499999" >
-                          1,000,000đ - 1,500,000đ
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" data-min="1000000" data-max="2000000">
+                          1,000,000đ - 2,000,000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="4999999" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" data-min="2000000" data-max="5000000">
                           2,000,000đ - 5,000,000đ
                         </label>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" value="50000000" >
+                          <input type="checkbox" class="form-check-input" name="price-classify[]" id="" data-min="5000000" data-max="1000000000">
                           Trên 5,000,000đ
                         </label>
                     </div>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="pro-name">{{ $item->name }}</p>
-                                    <p class="pro-price">{{ number_format($item->price) }}</p>
+                                    <p class="pro-price">{{ number_format($item->price)}}đ</p>
                                 </div>
                                 <button type="submit" class="btn btn-outline-danger"><a onclick="cartdropdown({{ $item->id }})"  href="javascript:">Thêm vào giỏ hàng</a></button>
                             </div>

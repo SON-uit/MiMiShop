@@ -97,21 +97,28 @@ class ProductController extends Controller
     }
     public function classify(Request $request){
         $temp = $request->categories;
-        $type = $request->type;
+         $type = $request->type;
          if($type=='phụ'){
             $type = 'phụ kiện';
-        } 
-        $temp = (int)$temp[count($temp)-1];
+        }  
+        $temp = $temp[count($temp)-1];
+        $minPrice = (int)$temp['min'];
+        $maxPrice = (int)$temp['max'];
         $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
                                     ->where([
                                         ['type_products.name',"PlayStation5"],
                                         ['products.classification',$type],
-                                        ['price',"<",$temp],
+                                        ['price',"<",$maxPrice],
+                                        ['price','>',$minPrice]
                                     ])
                                     ->select('products.name','products.image','price','products.slug','products.id','products.classification',)
                                     ->get();
-        return $data;
-       
+        if(count($data)===0){
+            return 1;
+        }  
+        else{ 
+            return $data;
+        }
     }
     
 }
