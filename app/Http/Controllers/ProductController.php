@@ -89,7 +89,9 @@ class ProductController extends Controller
         $data =product::select('name','image')
                         ->where("name","LIKE","%{$request['term']}%")
                         ->get();
-        return response()->json($data);
+        return response()
+        ->json($data);
+
     }
     public function slugView($slug){
         $product = product::where('slug', $slug)->first();
@@ -119,6 +121,13 @@ class ProductController extends Controller
         else{ 
             return $data;
         }
+    }
+    public function searchProduct(Request $request){
+        $name = $request->name;
+        $temp1= explode('-',$name); 
+        $temp2= implode(' ',$temp1);
+        $data = product::where('name',$temp2)->select('slug')->get();
+        return $data;
     }
     
 }

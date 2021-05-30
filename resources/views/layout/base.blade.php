@@ -56,10 +56,10 @@
                 </div>
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-10">
                             <div class="header-icon">
-                                <input type="text" class="typeahead " placeholder="search...">
-                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <input type="text" class="typeahead"placeholder="search..." style="width:300px">
+                                <i id="search-product"class="fa fa-search" aria-hidden="true"></i>
                                 <i class="fa fa-user"  id="user-icon"></i>
                                 <i class="fa fa-shopping-cart" id="cart-icon">
                                     @if(Session::has("Cart") !=null)
@@ -70,7 +70,7 @@
                                 </i> 
                             </div>
                         </div>
-                        <div class="col-md-5" id="user-menu">
+                        <div class="col-md-2" id="user-menu">
                             @if (Session::has('user') != null)
                             <div class="dropdown" style="margin-top: 35px">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -90,7 +90,7 @@
             <div id="change-item-cart" >
                 @if(Session::has('Cart') != null)
                 <div class="row">
-                    <div class="col-md-5 offset-md-6 pos">
+                    <div class="col-md-5 offset-md-5 pos">
                        <div class="cart" id="cart-dropdown">
                            <span class="icon-cart"><i class="fas fa-sort-up" style="font-family :Font Awesome 5 Free"></i></span>
                            <div class="header-cart">
@@ -134,7 +134,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-md-5 offset-md-6 pos">
+                    <div class="col-md-5 offset-md-5 pos">
                         <div class="cart" id="cart-dropdown">
                             <span class="icon-cart"><i class="fas fa-sort-up" style="font-family :Font Awesome 5 Free"></i></span>
                             <div class="header-cart">
@@ -184,7 +184,7 @@
             </div>
             <nav>
                 <ul class="mainMenu">
-                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="http://localhost/webshop/public/mainView">Trang chủ</a></li>
                     <li><a href="#">Collector</a></li>
                     <li>
                         <a href="#" data-link="">PlayStation <span class="arrow arrowDown"></span></a>
@@ -305,33 +305,15 @@
         </div>
     </footer>
   </body>
-   <script>
-    var path ="{{ route('autocomplete') }}";
-    $("input.typeahead").typeahead({
-       source: function (query,process){
-       return $.get(path, {query:query} ,function (data) {
-              return ( process(data));
-       });
-    }})  
-    
-  </script> 
-  {{-- <script>
-      var path ="{{ route('autocomplete')}}";
-      $( "input.typeahead" ).autocomplete({
-      source: function( request, response ) {
-        $.ajax( {
-          url: path,
-          dataType: "json",
-          data: {
-            term: request.term
-          },
-          success: function(data) {
-            response(data);
-          }
-        } );
-      },
-           minLength: 2
-      });
-    
-  </script> --}}
+    <script>
+        var path ="{{ route('autocomplete') }}";
+        $("input.typeahead").typeahead({
+        source: function (query,process){
+        return $.get(path, {query:query} ,function (data) {
+                return ( process(data));
+        });
+        }})  
+    </script> 
+
+  
 </html>

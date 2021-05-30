@@ -2,6 +2,7 @@ Validator({
     form: "#login-form",
     rule : [
       Validator.isRequired("#email"),
+      Validator.isEmail("#email"),
       Validator.isRequired("#password"),
       Validator.Length("#password", 8, 16),
     ],
@@ -25,7 +26,6 @@ Validator({
                   $("#login-card").hide();
               });
             });
-         
           }else{
             alert("Dang nhap that bai");
             window.location.reload();

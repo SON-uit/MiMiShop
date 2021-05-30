@@ -5,7 +5,10 @@
     right: 33px;
 }
 .header-icon{
-    margin-top: 40px;
+    margin-top: 30px;
+}
+.header-icon:hover{
+    cursor: pointer;
 }
 /* NAV style */
 nav{
@@ -38,7 +41,9 @@ nav li:hover>a{
     cursor: pointer;
     text-decoration: none;
 }
-
+a{
+    text-decoration:none;
+}
 nav .mainMenu>li{
     display: inline-block;
     position: relative;
@@ -179,6 +184,7 @@ a{
 .demo{
     margin-top: 133.762px;
 }
+
 .top-footer .letter{
     background-repeat: no-repeat;
     /* background-image: url(//theme.hstatic.net/1000190106/1000636860/14/icon_footer.png?v=226); */
