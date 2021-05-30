@@ -3,7 +3,7 @@
 <div class="container-fluid" id="space-top">
     <div class="row">
         <div class="col-md-12">
-            <img src="images/banner.jpg" width="100%">
+           <a href="http://localhost/webshop/public/collection/may-ps-5"><img src="images/banner.jpg" width="100%"></a>
         </div>
     </div>
     <div>

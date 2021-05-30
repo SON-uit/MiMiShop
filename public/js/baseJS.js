@@ -34,24 +34,36 @@ function RenderCart(response){
     $("#cart-dropdown").toggleClass("dropdown-cart-items");    
     $("#total-quanty-show").html($("#total-quanty-cart").html());  
 }
+//toogle cart
 $(document).ready(function () {
    $("#cart-icon").click(function (e) { 
        e.preventDefault();
       $("#cart-dropdown").toggleClass("dropdown-cart-items");
    });
 });
+//toogle loginform
 $(document).ready(function () {
     $("#user-icon").click(function (e) { 
         e.preventDefault();
         $("#login-card").toggleClass("dropdown-login-form");
     });
-});
-
-$(document).ready(function () {
-    $("#test").hover(function () {
-          var link = ( $(this).data('link'));
-          $(this).attr("href","http://localhost/webshop/public/collection/"+link);        
-    });
+});$(document).ready(function () {
+    $("#search-product").click(function(e){
+         e.preventDefault();
+        let productName= ($('.typeahead').val().replace(/\s/g, '-'));
+        if(productName){
+         $.ajax({
+            type: "GET",
+            url: 'http://localhost/webshop/public/searchProduct',
+            data: {name:productName},
+            dataType: "json",
+            success: function (data) {
+                location.href = 'http://localhost/webshop/public/product/'+data[0].slug; 
+                ($('.typeahead').val(''));
+            }
+        }); 
+        }
+    })
 });
 
 
