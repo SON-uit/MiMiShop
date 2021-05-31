@@ -64,7 +64,6 @@ Route::post('check/checkout',[CartController::class,'check_checkout'])->name('ch
 Route::get('autocomplete',[ProductController::class,'autocomplete'])->name('autocomplete');
 Route::get('product/{slug}',[ProductController::class,'slugView'])->name('product/{slug}');
 // Images
-//Route::get('images/create',[ProductController::class,'addImgs'])->name('test/Img');
 Route::get('price-classify',[ProductController::class,'classify'])->name('classify');
 Route::get('searchProduct',[ProductController::class,'searchProduct'])->name('searchProduct');
 Route::get('collection/may-ps-5',function(){
