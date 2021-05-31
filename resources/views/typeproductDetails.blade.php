@@ -45,12 +45,12 @@
                 </div>
             </div>
             <div class="col-md-8 " >
-                <div class="col-md-12 mb-5">
+                <div class="col-md-12 ">
                     <h2 id="type" value={{( $data[0]->classification )}}>{{ Str::upper( $data[0]->classification )}}<span> PS5</span></h2>
                 </div>
                 <div class="row pricesort">
                     @foreach ($data as $item)
-                        <div class="col-md-3">
+                        <div class="col-md-3" style="margin:15px 0">
                             <div class="card">
                                 <div class="col-md-12">
                                     <a href=" {{ url('product/'. $item->slug )}}"><img src="images/products/store/{{ $item->image  }}" alt="{{ $item->name }}" width="100%"></a>

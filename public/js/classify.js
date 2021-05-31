@@ -3,19 +3,6 @@ $(document).ready(function () {
     let categories= [];
     $('input[name="price-classify[]"]').change(function (e) { 
         e.preventDefault();
-    /*     categories =[];
-        if(check==true){
-            $(this).prop('checked',true);
-            check=false
-        }else{
-            $(this).prop('checked',false);
-            check=true;
-        }
-        if($(this).is(':checked')){
-        $('input[name="price-classify[]"]:checked').each(function(){
-           categories.push($(this).val());
-        }) */
-        
         categories =[];
         if(categories.length===0){
             let temp ={};

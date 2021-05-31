@@ -1,6 +1,6 @@
 @if(Session::has('Cart') != null)
 <div class="row">
-    <div class="col-md-5 offset-md-6 pos">
+    <div class="col-md-4 offset-md-6 pos">
        <div class="cart" id="cart-dropdown">
            <span class="icon-cart"><i class="fas fa-sort-up" style="font-family: Font Awesome 5 Free";></i></span>
            <div class="header-cart">
@@ -8,25 +8,25 @@
            </div>
            <div class="body-cart">
                @foreach (Session::get('Cart')->products as $item)
-                    <div class="row">
+                    <div class="row" style="padding:15px">
                         <div class="col-md-3">
-                            <img src="images/products/store/{{ $item['productinfo']->image }} " width="50%">
+                            <img src="images/products/store/{{ $item['productinfo']->image }} " width="100%">
                         </div>
                         <div class="col-md-9 mt-4">
                             <div class="row">
-                                <div class="col-md-9" style="background: red;">
+                                <div class="col-md-8" >
                                     <p>{{ $item['productinfo']->name }}</p>
                                 </div>
-                                <div class="col-md-3" style="background: yellow;">
+                                <div class="col-md-4" >
                                     <div class="delete-icon">
                                         <i class="far fa-trash-alt" data-icon="{{ $item['productinfo']->id }}"></i>
                                     </div>
                                 </div>
-                                <div class="col-md-9" style="background: red;">
+                                <div class="col-md-8" >
                                     <p>{{ $item['quanty'] }}</p>
                                 </div>
-                                <div class="col-md-3" style="background: yellow;">
-                                    <p>{{ $item['productinfo']->price }}đ</p>
+                                <div class="col-md-4" >
+                                    <p>{{ number_format($item['productinfo']->price) }}đ</p>
                                 </div>
                             </div>
                         </div>
@@ -35,10 +35,14 @@
                @endforeach
             </div>
            <div class="footer-cart">
-               <p id="total-quanty-cart">{{ Session::get('Cart')->totalQuanty }}</p>
-               <p> Tổng tiền: {{ number_format(Session::get('Cart')->totalPrice) }}đ</p><br>
-               <a href="http://localhost/webshop/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
-               <a href="#" class="btn btn-primary">Thanh toán</a>
+            <div style="display: flex;justify-content: space-between;">
+                <h4> Tổng tiền: </h4>
+                    <div><h4 style="color: red">{{ number_format(Session::get('Cart')->totalPrice) }}đ </h4></div><br>
+                </div>
+                <div class="thanhtoan">
+                 <a  href="http://localhost/webshop/public/ListCart" class="btn btn-primary">XEM GIỎ HÀNG</a>
+                 <a  href="http://localhost/webshop/public/checkout" class="btn btn-primary">THANH TOÁN</a>
+                </div>
            </div>
        </div>
     </div>
