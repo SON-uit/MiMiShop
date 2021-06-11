@@ -17,17 +17,11 @@ Validator({
         dataType: "html",
         success: function (response) {
           if(response==true){
-            alert("Dang nhap thanh cong");
+            alert("Đăng nhập thành công");
             window.location.reload();
-            $("#login-card").hide();
-            $(document).ready(function () {
-              $("#user-icon").click(function (e) { 
-                  e.preventDefault();
-                  $("#login-card").hide();
-              });
-            });
+            $("#user-icon").css('display','none');
           }else{
-            alert("Dang nhap that bai");
+            alert("Đăng nhập thất bại");
             window.location.reload();
           }
         }

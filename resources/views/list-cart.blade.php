@@ -12,19 +12,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-7 offset-md-1" >
+                    <div class="col-md-7 offset-md-1 mt-3" >
                         <table class="table table-stripped">
                             <thead class="thead-light">
-                                <tr>
-                                    <th>Image</th>
-                                    <th style="width:224px;">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quanty</th>
-                                    <th>Total</th>
-                                    <th>Delete</th>
+                                <h3>Danh sách sản phẩm</h3>
+                                <tr class="text-center">
+                                    <th></th>
+                                    <th>TÊN</th>
+                                    <th>GIÁ</th>
+                                    <th>SỐ LƯỢNG</th>
+                                    <th>TỔNG TIỀN</th>
+                                    <th>XÓA</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="body-list-cart">
                                 @if(Session::has('Cart') != null)
                                     @foreach (Session::get('Cart')->products as $item)
                                         <tr>
@@ -48,7 +49,7 @@
                             </tfoot>
                         </table>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-5">
                         <div class="card card-checkout">
                             <div class="card-header">
                                 Thông tin đơn hàng
@@ -65,7 +66,7 @@
                                 <p class="card-text">Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-danger">Thanh Toán</button>
+                                <a href="http://localhost/webshop/public/checkout"><button class="btn btn-danger">Thanh Toán</button></a>
                                 <a href="http://localhost/webshop/public/mainView">Tiếp tục mua hàng</a>
                             </div>
                         </div>
@@ -84,6 +85,7 @@
                     <div class="col-md-3">
                         <div class="policy">
                             <b> Chính sách mua hàng </b>
+                            <hr>
                             <ul>
                                 <li><p>Sản phẩm còn đủ tem mác, chưa qua sử dụng.</p></li>
                                 <li><p>Tích điểm thành viên khi mua hàng.</p></li>

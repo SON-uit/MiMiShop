@@ -19,34 +19,42 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-4">
+                    <h1 class="text-center" style="position: relative;top:300px"><u >THÊM SẢN PHẨM</u></h1>
+                </div>
+                <div class="col-md-4 mt-5">
                    @if(Session::has('product_add'))
                     <div class="alert alert-success" role="alert">
                       {{ Session::get('product_add') }}
                     </div>  
                   @endif 
-                    <form method="POST"   action="{{ route("product_add") }}"  enctype="multipart/form-data" id="productform">
+                    <b>New Product</b>
+                    <form method="POST"  action="{{ route("product_add") }}"  enctype="multipart/form-data" id="productform">
                         @csrf
                         <div class="form-group">
-                          <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Ten san pham">
+                          <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Tên sản phẩm">
                           <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Mo ta san pham">
+                            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Mô tả sản phẩm">
                             <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" name="status" id="status" aria-describedby="helpId" placeholder="Tinh trang san pham">
+                          <input type="text" class="form-control" name="status" id="status" aria-describedby="helpId" placeholder="Tình trạng sản phẩm">
                           <small id="helpId" class="form-text text-muted">Help text</small>
                       </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId" placeholder="Gia san pham">
+                            <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId" placeholder="Giá sản phẩm">
                             <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
                         <div class="form-group">
                            
-                            <input type="text" class="form-control" name="unit" id="unit" aria-describedby="helpId" placeholder="Don vi tinh">
+                            <input type="text" class="form-control" name="unit" id="unit" aria-describedby="helpId" placeholder="Đơn vị tính">
                             <small id="helpId" class="form-text text-muted">Help text</small>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="link" id="link" aria-describedby="helpId" placeholder="Link youtube của sản phẩm">
+                          <small id="helpId" class="form-text text-muted">Help text</small>
                         </div>
                         <div class="form-group">
                           

@@ -20,7 +20,7 @@ class CartController extends Controller
         if($product !=null){
             $oldCart = Session('Cart') ? Session('Cart') :null;
             $newCart = new Cart($oldCart);
-            $newCart->AddCart($product, $id);
+            $newCart->AddCart($product, $id);   
             $request->session()->put('Cart',$newCart);
         }
     return  view('cart');
@@ -84,7 +84,7 @@ class CartController extends Controller
         $newbill->total = $request->session()->get('Cart')->totalPrice;
         $customer->bills()->save($newbill); 
         ////danh sach id san pham trong gio hang
-        $list =[];
+     //   $list =[];
         $productsInCart = $request->session()->get('Cart')->products;
         foreach($productsInCart as $product=>$val){
             $productID=$val['productinfo']->id;
@@ -94,7 +94,7 @@ class CartController extends Controller
                 'quanty' => $productQuanty,
                 'price'  => $productPrice,
                 ]);
-          $newbill->products()->attach($list,['quanty']);
+      //    $newbill->products()->attach($list,['quanty']);
         };
         $request->Session()->forget('Cart');
           return back()->with('bill','Order Successfully!');       

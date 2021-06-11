@@ -20,7 +20,6 @@
   <body >
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -30,10 +29,10 @@
     <script type="module" src="{{ URL::asset('js/validator.js') }}"></script>
     <script   src="{{ URL::asset('js/baseJS.js') }}"></script>
     <script type="module" src = "{{ URL::asset('js/loginJS.js') }}"></script>
-   {{--  <script   src="{{ URL::asset('js/listcart.js') }}"></script> --}}
     <script>
+        //navbar tha xuong khi onscroll
        var tmp = 0;
-       $(window).scroll(function () {
+        $(window).scroll(function () {
            var currentPos = $(this).scrollTop();
            $("#cart-dropdown").removeClass("dropdown-cart-items");
            if(currentPos >= tmp || currentPos === 0 ){
@@ -46,7 +45,16 @@
               $('#space-top').addClass("demo");
            }
            tmp = currentPos;
-       });
+        })
+        //tạo scroll bar khi co nhieu san pham trong cart
+        if($('.body-cart').height() > 300){
+            $('.body-cart').css({'height':'300','overflow-y':'scroll','overflow-x':'hidden'});
+        }
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 2000
+            });
+        });
     </script>
     <header id="scroll-header">
         <div class="container-fluid">
@@ -56,11 +64,13 @@
                 </div>
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <div class="header-icon">
                                 <input type="text" class="typeahead"placeholder="search..." style="width:280px">
                                 <i id="search-product"class="fa fa-search" aria-hidden="true"></i>
-                                <i class="fa fa-user"  id="user-icon"></i>
+                                @if(Session::has('admin')==null || Session::has('user')!=null)
+                                <i class="fa fa-user" id="user-icon"></i>
+                                @endif
                                 <i class="fa fa-shopping-cart" id="cart-icon">
                                     @if(Session::has("Cart") !=null)
                                         <span id="total-quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
@@ -70,16 +80,23 @@
                                 </i> 
                             </div>
                         </div>
-                        <div class="col-md-2" id="user-menu">
-                            @if (Session::has('user') != null)
+                        <div class="col-md-2 mr-5" id="user-menu">
+                            @if (Session::has('admin') != null || Session::has('user')!=null)
                             <div class="dropdown" style="margin-top: 35px">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if(Session::has('user')!=null)
                                    <span>HI,{{ Session::get('user')->name }}</span>
+                                   @endif
+                                   @if(Session::has('admin')!=null)
+                                   <span>HI,{{ Session::get('admin')->name }}</span>
+                                   @endif
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    @if(Session::has('admin')!=null)
+                                  <a href="http://localhost/webshop/public/admin/product/read"><button class="dropdown-item" type="button">Admin</button></a>
+                                    @endif
                                   <a href="http://localhost/webshop/public/ListCart"><button class="dropdown-item" type="button">Giỏ hàng</button></a>
-                                  <button class="dropdown-item" type="button">Logout</button>
-                                  <button class="dropdown-item" type="button">Something else here</button>
+                                  <a href="http://localhost/webshop/public/logout"><button class="dropdown-item" type="button" id="logout">Logout</button></a>
                                 </div>
                             </div>
                             @endif
@@ -96,7 +113,7 @@
                            <div class="header-cart">
                                <p>Giỏ hàng </p>
                            </div>
-                           <div class="body-cart">
+                           <div class=" body-cart">
                                @foreach (Session::get('Cart')->products as $item)
                                     <div class="row" style="padding: 15px">
                                         <div class="col-md-3 ">
@@ -141,7 +158,7 @@
                 @endif
                 <div class="row">
                     <div class="col-md-4 offset-md-6 pos">
-                        <div class="cart" id="cart-dropdown">
+                        <div class="cart" id="cart-dropdown" >
                             <span class="icon-cart"><i class="fas fa-sort-up" style="font-family :Font Awesome 5 Free"></i></span>
                             <div class="header-cart">
                                 <p>Giỏ hàng </p>

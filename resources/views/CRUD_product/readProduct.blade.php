@@ -18,8 +18,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <section>
         <div class="container-fluid">
+            <h3 class="text-center">CHÀO MỪNG {{ Session::get('admin')->name}}</h3>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10 offset-md-1">
                     @if(Session::has('product_delete'))
                         <div class="alert alert-danger" role="alert">
                             <strong>{{ Session::get('product_delete') }}</strong>
@@ -27,7 +28,8 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            All Product
+                            <p>DANH SÁCH CÁC SẢN PHẨM</p>
+                            <a href="http://localhost/webshop/public/admin/product/create"><button class="btn btn-primary">THÊM SẢN PHẨM MỚI</button></a>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -39,7 +41,7 @@
                                         <th>Price</th>
                                         <th>Unit</th>
                                         <th>Classification</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,7 +53,7 @@
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->unit }}</td>
                                         <td>{{ $item->classification }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="http://localhost/webshop/public/admin/product/delete/{{ $item->id }}" class="btn btn-danger">Delete</a>
                                             <a href="http://localhost/webshop/public/admin/product/edit/{{ $item->id }}" class="btn btn-success">Edit</a>
                                             <a href="http://localhost/webshop/public/admin/product/addPhotos/{{ $item->id }}" class="btn btn-primary">More Photos</a>

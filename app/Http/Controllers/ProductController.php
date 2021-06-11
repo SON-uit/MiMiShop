@@ -15,11 +15,8 @@ class ProductController extends Controller
         return view('CRUD_product/create',compact('category'));
     }
     public function add(Request $request){
+        
         $type = type_product::where('id',$request->type)->first(); 
-        $validation = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-        ]);
         $image =$request->file('image');
         $imageName =time().'.'. $image->getClientOriginalExtension();
         $image->move(public_path('images/products/store'),$imageName);
@@ -31,9 +28,10 @@ class ProductController extends Controller
         $product ->unit =$request->unit;
         $product->classification =$request->classification;
         $product->image = $imageName;
+        $product->link = $request->link;
         $product->slug = $request->slug; 
         $type->products()->save($product);
-        return back()->with('product_add','TypeProduct has been created successfully!');
+        return back()->with('product_add','TypeProduct has been created successfully!'); 
     }       
     public function read(){
         $data =product::all();
@@ -45,10 +43,6 @@ class ProductController extends Controller
     }
     public function edit(Request $request){
         $type = type_product::where('id',$request->type)->first(); 
-        $validation = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-        ]);
         $image =$request->file('image');
         $imageName =time().'.'. $image->getClientOriginalExtension();
         $image->move(public_path('images/products/store'),$imageName);
@@ -73,17 +67,19 @@ class ProductController extends Controller
         return view('CRUD_product/addPhotos',compact('product'));
     }
     public function storePhotos(Request $request){
+      
         $product = product::find($request->product_id);
-        foreach($request->photos as $photo){
-            $productPhotos = new productPhotos();
-            $photoName =time().'.'. $photo->getClientOriginalExtension();
-            $photo->move(public_path('images/products/store'),$photoName);
-            $productPhotos->fileName= $photoName;
-            $product->photos()->save($productPhotos);
-            
-        }
-        return back()->with('product_photos', count($request->photos).' photos has been edited successfully!');
-
+        $files =$request->file('photos');
+         if($request->hasfile('photos')){
+            foreach($files as $photo){
+                $productPhotos = new productPhotos();
+                $photoName =$photo->getClientOriginalName();
+                $photo->move(public_path('images/products/store'),$photoName);
+                $productPhotos->fileName= $photoName;
+                $product->photos()->save($productPhotos);   
+            }
+        } 
+     return back()->with('product_photos', count($request->photos).' photos has been edited successfully!');
     }
     public function autocomplete(Request $request){
         $data =product::select('name','image')
@@ -92,10 +88,14 @@ class ProductController extends Controller
         return response()
         ->json($data);
 
-    }
+    }//productDetails
     public function slugView($slug){
         $product = product::where('slug', $slug)->first();
-        return view('productDetails',compact('product'));
+       $photos = DB::table('products')->join('product_photos','products.id','=','product_photos.id_product')
+                        ->where('slug',$slug)
+                        ->select('product_photos.fileName')
+                        ->get();
+            return view('productDetails',compact('product','photos'));
     }
     public function classify(Request $request){
         $temp = $request->categories;
