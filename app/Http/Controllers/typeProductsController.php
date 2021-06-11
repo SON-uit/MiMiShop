@@ -13,7 +13,7 @@ class typeProductsController extends Controller
         return view('CRUD_type_product/create');
     }
     public function add(request $request){
-        $validation =$request->validate([
+     /*    $validation =$request->validate([
             'name' =>'required',
             'description' =>'required',
             'original' =>'required',
@@ -22,8 +22,7 @@ class typeProductsController extends Controller
         ],
         [
             'name.required' =>'Nhap ten' //custom message
-        ]);
-
+        ]); */
         $image= $request->file;
         $imageName =time().'.'.$image->getClientOriginalExtension();//tao file name trong database
         $image->move(public_path('images'),$imageName);//luu image vao trong thu muc public/images/
@@ -57,16 +56,6 @@ class typeProductsController extends Controller
         return view('CRUD_type_product/edit',compact('data'));
     }
     public function edit(Request $request){
-        $validation =$request->validate([
-            'name' =>'required',
-            'description' =>'required',
-            'original' =>'required',
-            'slug' =>'required',
-            'image' =>'mimes:jpg,jpeg,png,gif|max:2048'
-        ],
-        [
-            'name.required' =>'Nhap ten' //custom message
-        ]);
         $image= $request->file;
         $imageName =time().'.'.$image->getClientOriginalExtension();//tao file name trong database
         $image->move(public_path('images/type_products'),$imageName);//luu image vao trong thu muc public/images/type_products

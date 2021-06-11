@@ -8,12 +8,36 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .arrow{
+        display: inline-block;
+        border :2px solid black;
+        width: 15px;
+        height: 15px;
+        border-bottom: none;
+        border-right: none;
+        margin-left: 3px;
+        margin-right: 10px;
+        position: relative;
+        right: 0;
+        bottom: 3px;
+    }
+    .arrowRight{
+        transform: rotate(-45deg) translate(0px,2px);
+    }
+    a:hover{
+      text-decoration: none;
+    }   
+    </style>
   </head>
   <body>
       <div class="container-fluid">
           <div class="row">
-              <div class="col-md-5 offset-md-2">
-                  <h3>Mimi Game Shop</h3><br>
+            <div class="col-md-2 mt-4" >
+                <a href="http://localhost/webshop/public/mainView"><h3><span class="arrow arrowRight"></span>BACK</h3></a>
+            </div>
+              <div class="col-md-5 mt-5">
+                  <h3>NO1 Game Shop</h3><br>
                   <h4>Thông tin thanh toán</h4><br>
                     <div class="PayMent">
                         <form method="POST" action="{{ route("check_checkout") }}">
@@ -43,8 +67,8 @@
                                 <label for="pay-method">Phương thức thanh toán</label>
                                 <select class="form-control" name="payment" id="pay-method">
                                   <option>Chọn phương thức thanh toán</option>
-                                  <option value="live">Trực tiếp</option>
-                                  <option value ="transfer">Chuyển khoản</option>
+                                  <option value="COD">Trực tiếp</option>
+                                  <option value ="Banking">Chuyển khoản</option>
                                 </select>
                               </div>
                             <div class="form-group">
@@ -54,7 +78,7 @@
                         </form>
                     </div>
               </div>
-              <div class="col-md-5" style="background: #ECE7E6">
+              <div class="col-md-5 mt-5" style="background: #ECE7E6">
                 @if(Session::has('Cart') != null)
                 @foreach (Session::get('Cart')->products as $item)
                     <tr>

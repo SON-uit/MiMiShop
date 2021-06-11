@@ -19,6 +19,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $input['name'];
         $user->email = $input['email'];
+        $user->gender = $input['gender'];
         $user->password = password_hash($input['password'],PASSWORD_BCRYPT);//ma hoa password;
         $user->save();
         return 'Đăng kí thành công';
@@ -30,13 +31,25 @@ class UserController extends Controller
         $input = ($request->inputValues);
         $email = $input['email'];
         $password = $input['password'];
+
         $profile = User::select('name','email')->where('email',$email)->first();
        if(Auth::attempt(['email' => $email, 'password' => $password])){
+           if($email ==='nguyenthanhson@gmail.com'){
+               $request->session()->put('admin',$profile);
+           }else{
             $request->session()->put('user', $profile);
+           }
              return true;
         }else{
-            $request->session()->forget('user');
             return false;
         }
+    }
+    public function admin(){
+        return view('layout/admin');
+    }
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->flush();
+        return back();
     }
 }
