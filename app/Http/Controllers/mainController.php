@@ -15,8 +15,8 @@ class mainController extends Controller
         return view('layout/base',compact('typeproduct'));
     }
     public function mainView(){
-        $instockProduct = product::where('status','còn hàng')->get();
-        $newProduct = product::where('status','new')->get();
+        $instockProduct = product::where('status','còn hàng')->limit(15)->get();
+        $newProduct = product::where('status','new')->limit(10)->get();
         $typeproduct = type_product::all();
         $bestsellerProduct=$this->bestsellerProduct();
         return view('layout/main',compact('instockProduct','typeproduct','newProduct','bestsellerProduct'));
@@ -31,5 +31,9 @@ class mainController extends Controller
                                          ->get();
         return $bestseller;
         
+    }
+    public function bestsellerProduct1(Request $request){
+        $newProduct = product::where('status','new')->limit(3)->get();
+        return $newProduct;
     }
 }

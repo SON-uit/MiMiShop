@@ -31,10 +31,10 @@ class ProductController extends Controller
         $product->link = $request->link;
         $product->slug = $request->slug; 
         $type->products()->save($product);
-        return back()->with('product_add','TypeProduct has been created successfully!'); 
+        return back()->with('product_add','Product has been added successfully!'); 
     }       
     public function read(){
-        $data =product::all();
+        $data =product::paginate(10);
         return view('CRUD_product/readProduct',compact('data'));
     }
     public function editform(){
@@ -56,7 +56,7 @@ class ProductController extends Controller
         $product->image = $imageName;
         $product->slug = $request->slug; 
         $type->products()->save($product);
-        return back()->with('product_edit','TypeProduct has been edited successfully!');
+        return back()->with('product_edit','Product has been edited successfully!');
     }
     public function delete($id){
         product::where('id' ,$id)->delete();

@@ -14,6 +14,11 @@
                 <img id="mainphoto"src ="images/products/store/{{ $product->image }}" width="100%">
             </div>
             <div class="col-md-7 mt-3">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="http://localhost/webshop/public/mainView">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="">Danh mục</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+                </ol>
                 <h2><b>{{ $product->name }}</b></h2>
                 <hr width="800px">
                 <h3 style="color:red">{{ number_format($product->price) }}đ</h3>
