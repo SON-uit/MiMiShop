@@ -1,0 +1,40 @@
+.sidebar{
+    position: relative;
+    background: #fafafa;
+    width: 30%;
+    padding-left: 2%;
+    float:right;
+    border-left: 1px solid;
+    border-color: #e1e1e1;
+    padding-top:1.5em;
+
+}
+.leftbox{
+    padding-top:3em;
+}
+.sidebar-name{
+    padding-top:1.5em;
+    padding-bottom: 1.5em;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    padding-top:1.5em;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #e1e1e1;
+}
+.total{
+    padding-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid;
+    border-color: #e1e1e1;
+}
+.breadcrumb-item{
+    display: inline-block;
+}
+.quanty{
+    display: flex;
+    justify-content: space-between;
+}

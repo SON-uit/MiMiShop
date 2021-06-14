@@ -5,15 +5,26 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel ="stylesheet"  href="{{ URL::asset('css/Paycart.css') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
       <div class="container-fluid">
           <div class="row">
-              <div class="col-md-5 offset-md-2">
+              <div class="col-md-5 offset-md-2 leftbox">
                   <h3>Mimi Game Shop</h3><br>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="http://localhost/webshop/public/ListCart" class="breadcrumb-link">Giỏ hàng</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="breadcrumb-link">Thông tin giao hàng</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="breadcrumb-link">Phương thức thanh toán</a>
+                    </li>
+                </ul>
                   <h4>Thông tin thanh toán</h4><br>
                     <div class="PayMent">
                         <form method="POST" action="{{ route("check_checkout") }}">
@@ -37,7 +48,6 @@
                                       <input type="text" class="form-control" name="phonenumber" id="phonenumber" aria-describedby="helpId" placeholder="Số điện thoại">
                                     </div>
                                 </div>
-                               
                             </div>
                             <div class="form-group">
                                 <label for="pay-method">Phương thức thanh toán</label>
@@ -50,23 +60,34 @@
                             <div class="form-group">
                               <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" placeholder="Đia chỉ">
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Thanh toán">
+                            <input type="submit" class="btn btn-outline-primary" value="Thanh toán">
                         </form>
                     </div>
               </div>
-              <div class="col-md-5" style="background: #ECE7E6">
+              <div class="sidebar"> {{-- thong tin checkout --}}
                 @if(Session::has('Cart') != null)
                 @foreach (Session::get('Cart')->products as $item)
+                <div class="sidebar-name">
                     <tr>
-                        <td><img src="images/products/store/{{ $item['productinfo']->image }}" width="100px"></td>
+                        <td><img src="images/products/store/{{ $item['productinfo']->image }}" width="90px"></td>
                         <td>{{ $item['productinfo']->name }}</td>
-                    </tr><br>
-                    <tr>
-                        <td> Giá :{{ number_format($item['productinfo']->price) }} vnd</td><br>
                     </tr>
+                </div>
+                <div class="quanty">
+                    <p>Số lượng: </p>
+                    <span>{{ $item['quanty'] }}</span>
+                    </div>
+                    <div class="price">
+                        <p>Giá: </p>
+                        <span style="color: blue">{{ number_format($item['productinfo']->price) }} vnd</span>
+                    </div>
+                  {{--  <tr>
+                        <td class="sidebar-price"> Giá :{{ number_format($item['productinfo']->price) }} vnd</td><br>
+                    </tr>--}}
                 @endforeach
                 <div class="total">
-                    <p>Tổng cộng <span>{{ number_format(Session::get('Cart')->totalPrice) }} vnd</span></p>
+                    <p>Tổng cộng: </p>
+                    <span style="color :blue">{{ number_format(Session::get('Cart')->totalPrice) }} vnd</span>
                 </div>
                 @endif
               </div>

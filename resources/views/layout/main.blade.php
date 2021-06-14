@@ -1,5 +1,6 @@
 @extends('layout/base')
 @section('mainBody')
+<link rel ="stylesheet"  href="{{ URL::asset('css/mainStyle.css') }}">
 <div class="container-fluid" id="space-top">
     <div class="row">
         <div class="col-md-12">
@@ -33,7 +34,7 @@
                        </div>
                        <button type="submit" class="btn btn-outline-danger"><a onclick="cartdropdown({{ $item->id }})"  href="javascript:">Thêm vào giỏ hàng</a></button>
                    </div>
-               </div>   
+               </div>
            @endforeach
         </div>
     </div>
