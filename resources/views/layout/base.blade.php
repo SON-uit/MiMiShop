@@ -68,9 +68,7 @@
                             <div class="header-icon">
                                 <input type="text" class="typeahead"placeholder="search..." style="width:280px">
                                 <i id="search-product"class="fa fa-search" aria-hidden="true"></i>
-                                @if(Session::has('admin')==null || Session::has('user')!=null)
                                 <i class="fa fa-user" id="user-icon"></i>
-                                @endif
                                 <i class="fa fa-shopping-cart" id="cart-icon">
                                     @if(Session::has("Cart") !=null)
                                         <span id="total-quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
@@ -85,10 +83,10 @@
                             <div class="dropdown" style="margin-top: 35px">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if(Session::has('user')!=null)
-                                   <span>HI,{{ Session::get('user')->name }}</span>
+                                   <span>Hi,{{ Session::get('user')->name }}</span>
                                    @endif
                                    @if(Session::has('admin')!=null)
-                                   <span>HI,{{ Session::get('admin')->name }}</span>
+                                   <span>Hi,{{ Session::get('admin')->name }}</span>
                                    @endif
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -104,6 +102,7 @@
                     </div>
                 </div>
             </div>
+            {{-- giohang --}}
             <div id="change-item-cart" >
                 @if(Session::has('Cart') != null)
                 <div class="row">
@@ -144,8 +143,10 @@
                            <div class="footer-cart">
                             <div style="display: flex;justify-content: space-between;">
                                 <h4> Tổng tiền: </h4>
-                                    <div><h4 style="color:red">{{ number_format(Session::get('Cart')->totalPrice) }}đ </h4></div><br>
-                                </div>
+                                <div><h4 style="color:red">{{ number_format(Session::get('Cart')->totalPrice) }}đ </h4></div><br>
+                                <h4> Tổng sản phẩm: </h4>
+                                <div><h4 style="color:red">{{ (Session::get('Cart')->totalQuanty) }} </h4></div><br>
+                            </div>
                                 <div class="thanhtoan">
                                  <a  href="http://localhost/webshop/public/ListCart" class="btn">XEM GIỎ HÀNG</a>
                                  <a href="http://localhost/webshop/public/checkout" class="btn">THANH TOÁN</a>
@@ -177,6 +178,7 @@
                     </div>
                 </div>
             </div>
+           {{--  login --}}
             <div class="login">
                 <div class="row">
                     <div class="col-md-3 offset-5 pos">

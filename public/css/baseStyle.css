@@ -19,7 +19,6 @@
 .typeahead:focus{
     padding: 5px;
     border: none;
-    background-color: #D9DBDB;
     border: 1px solid black;
     border-radius: 50px;
 }
@@ -99,7 +98,7 @@ nav .mainMenu>li:hover .subMenu, nav .subMenu>li:hover .subsubMenu{
 .arrowRight{
     transform: rotate(135deg) translate(0px,2px);
 }
-a{
+.far,a:hover{
     cursor: pointer;
 }
 .onscroll-header{

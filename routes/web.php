@@ -79,7 +79,7 @@ Route::get('collection/may-ps-5',function(){
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"máy"]
                                  ])
-                                 ->select('products.name','products.image','price','products.slug','products.id','products.classification','type_products.id')
+                                 ->select('products.*')
                                  ->get();
     $img = 'may-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));
@@ -90,7 +90,7 @@ Route::get('collection/game-ps-5',function(){
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"game"]
                                  ])
-                                 ->select('products.name','products.image','price','products.slug','products.id','products.classification',)
+                                 ->select('products.*')
                                  ->get();
     $img = 'game-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));
@@ -102,7 +102,7 @@ Route::get('collection/phukien-ps-5',function(){
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"phụ kiện"]
                                  ])
-                                 ->select('products.name','products.image','price','products.slug','products.id','products.classification',)
+                                 ->select('products.*',)
                                  ->get();
     $img ='phukien-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));  

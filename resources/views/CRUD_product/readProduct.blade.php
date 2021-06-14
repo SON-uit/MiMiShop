@@ -35,6 +35,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th style="width: 300px">Name</th>
                                         <th style="width: 300px">Discription</th>
                                         <th>Status</th>
@@ -47,6 +48,7 @@
                                 <tbody>
                                     @foreach ($data as $item)
                                     <tr>
+                                        <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->description }}</td>
                                         <td>{{ $item->status }}</td>
@@ -59,14 +61,14 @@
                                             <a href="http://localhost/webshop/public/admin/product/addPhotos/{{ $item->id }}" class="btn btn-primary">More Photos</a>
                                         </td>
                                     </tr>
+                                       
                                     @endforeach
-                                    </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="card-footer">
-                            Footer
-                        </div>
+                            <div class="d-flex justify-content-center">
+                                {!! $data->links() !!}
+                            </div>
+                        </div>   
                     </div>
                 </div>
             </div>

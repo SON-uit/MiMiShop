@@ -19,7 +19,6 @@ Validator({
           if(response==true){
             alert("Đăng nhập thành công");
             window.location.reload();
-            $("#user-icon").css('display','none');
           }else{
             alert("Đăng nhập thất bại");
             window.location.reload();

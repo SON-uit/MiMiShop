@@ -31,8 +31,6 @@ class CartController extends Controller
         $newCart->DeleteItem($id);
         if(count ($newCart->products) >0 ) {
             $request->Session()->put('Cart',$newCart);  
-        }elseif(count($newCart->products) == 0){
-            $request->Session()->put('Cart',$newCart);
         }
         else{
             $request->Session()->forget('Cart');
@@ -46,10 +44,8 @@ class CartController extends Controller
         $oldCart = Session('Cart') ? Session('Cart') :null;
         $newCart = new Cart($oldCart);
         $newCart->DeleteItem($id);
-        if(count ($newCart->products) >0 ) {
+        if(count ($newCart->products) > 0 ) {
             $request->Session()->put('Cart',$newCart);  
-        }elseif(count($newCart->products) == 0){
-            $request->Session()->put('Cart',$newCart);
         }
         else{
             $request->Session()->forget('Cart');
