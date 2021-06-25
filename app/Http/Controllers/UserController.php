@@ -13,13 +13,13 @@ class UserController extends Controller
         return view('register');
     }
     public function Store_register(Request $request){
-        
         $input = ($request->inputValues);// convert JSON to Object;
         /* $data = json_encode($request->inputValues);//convert object to JSON */
         $user = new User();
         $user->name = $input['name'];
         $user->email = $input['email'];
         $user->gender = $input['gender'];
+        $user->birthDay = $input['date'];
         $user->password = password_hash($input['password'],PASSWORD_BCRYPT);//ma hoa password;
         $user->save();
         return 'Đăng kí thành công';

@@ -72,6 +72,7 @@ Route::get('autocomplete',[ProductController::class,'autocomplete'])->name('auto
 Route::get('product/{slug}',[ProductController::class,'slugView'])->name('product/{slug}');
 // Images
 Route::get('price-classify',[ProductController::class,'classify'])->name('classify');
+// search
 Route::get('searchProduct',[ProductController::class,'searchProduct'])->name('searchProduct');
 Route::get('collection/may-ps-5',function(){
     $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
@@ -107,4 +108,10 @@ Route::get('collection/phukien-ps-5',function(){
     $img ='phukien-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));  
 });
+//BestSeller Product
 Route::get('bestseller',[mainController::class,'bestsellerProduct']);
+//Charts
+Route::get('barChart',[mainController::class,'barChartData']);
+Route::get('showBarChart',[mainController::class,'showBarChart']);
+Route::get('pieChart',[mainController::class,'pieChartData']);
+Route::get('showPieChart',[mainController::class,'showPieChart']);

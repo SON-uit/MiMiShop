@@ -19,17 +19,18 @@
                 <input type="text" name="name" id="fullname" class="form-control" placeholder="Ho ten" aria-describedby="helpId">
                 <small id="form-message" class="text"></small>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
-                <label class="form-check-label" for="inlineRadio1">Nam</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
-                <label class="form-check-label" for="inlineRadio2">Nữ</label>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="gender" id="gioitinh" value="male"checked>
+                  Nam
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input " name="gender" id="gioitinh" value="female" >
+                  Nữ
+                </label>
               </div>
               <div class="form-group">
-                <label for="date">Ngày </label>
-                <input type="text" name="date" id="date" class="form-control" placeholder="dd//mm//yy" aria-describedby="helpId">
+                <label for="date">Ngày Sinh</label>
+                <input type="date" name="date" id="date" class="form-control" placeholder="dd//mm//yy" aria-describedby="helpId">
                 <small id="form-message" class="text"></small>
               </div>
               <div class="form-group">

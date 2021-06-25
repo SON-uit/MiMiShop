@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     let categories= [];
     $('input[name="price-classify[]"]').change(function (e) { 
