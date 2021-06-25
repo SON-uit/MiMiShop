@@ -80,7 +80,6 @@ class CartController extends Controller
         $newbill->total = $request->session()->get('Cart')->totalPrice;
         $customer->bills()->save($newbill); 
         ////danh sach id san pham trong gio hang
-     //   $list =[];
         $productsInCart = $request->session()->get('Cart')->products;
         foreach($productsInCart as $product=>$val){
             $productID=$val['productinfo']->id;

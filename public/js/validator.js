@@ -38,7 +38,11 @@
                     var messageAlert = document.querySelector(options.message);
                     var getValues = {};//lay tat ca cac input
                     formValues.forEach(function(input){
-                        getValues[input.name] = input.value;
+                        if(input.name !='gender'){
+                            getValues[input.name] = input.value; 
+                        }else{
+                            getValues[input.name]=document.querySelector('input[name="gender"]:checked').value;
+                        }
                     })
                     options.checkSubmit(getValues);//tra gia tri ve ham check
                 
@@ -85,7 +89,7 @@ Validator.isEmail = function (selector){
         selector : selector,
         test : function(value) {
             var regexEmail =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-            return regexEmail.test(value) ? undefined : 'Nhập lại Email';
+            return regexEmail.test(value) ? undefined : 'Email không hợp lệ';
         }
     }
 }

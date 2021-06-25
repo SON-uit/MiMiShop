@@ -11,6 +11,7 @@
     <!--CSS -->
     <link rel ="stylesheet"  href="{{ URL::asset('css/baseStyle.css') }}">
     <link rel ="stylesheet"  href="{{ URL::asset('css/mainStyle.css') }}">
+    <script  src="{{ URL::asset('js/classify.js') }}"></script>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
     <!-- Base Link -->
     <base href="http://localhost/webshop/public/">
