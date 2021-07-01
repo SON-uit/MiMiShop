@@ -26,6 +26,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     {{-- file JS cua bladeView --}}
     <script type="module" src="{{ URL::asset('js/validator.js') }}"></script>
     <script   src="{{ URL::asset('js/baseJS.js') }}"></script>
@@ -69,6 +71,13 @@
                             <div class="header-icon">
                                 <input type="text" class="typeahead"placeholder="search..." style="width:280px">
                                 <i id="search-product"class="fa fa-search" aria-hidden="true"></i>
+                                @if(Session::has('admin')!=null || Session::has('user')!=null)
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('#user-icon').off('click');
+                                        });
+                                    </script>
+                                @endif
                                 <i class="fa fa-user" id="user-icon"></i>
                                 <i class="fa fa-shopping-cart" id="cart-icon">
                                     @if(Session::has("Cart") !=null)
@@ -228,9 +237,9 @@
                             <li>
                                 <a href="#">PlayStation 4<span class="arrow arrowRight"></a>
                                 <ul class="subsubMenu">
-                                    <li><a href="#">Máy PS4</a></li>
-                                    <li><a href="#">Game PS4</a></li>
-                                    <li><a href="#">Phụ kiện PS4</a></li>
+                                    <li><a href="http://localhost/webshop/public/collection/may-ps-4">Máy PS4</a></li>
+                                    <li><a href="http://localhost/webshop/public/collection/game-ps-4">Game PS4</a></li>
+                                    <li><a href="http://localhost/webshop/public/collection/phukien-ps-4">Phụ kiện PS4</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -238,8 +247,8 @@
                     <li>
                         <a href="#">Nintendo Switch<span class="arrow arrowDown"></span></a>
                         <ul class="subMenu">
-                            <li><a href="#">Máy Switch</a></li>
-                            <li><a href="#">Game Switch</a></li>
+                            <li><a href="http://localhost/webshop/public/collection/may-switch">Máy Switch</a></li>
+                            <li><a href="http://localhost/webshop/public/collection/game-switch">Game Switch</a></li>
                             <li><a href="#">Phụ kiện Switch</a></li>
                         </ul>
                     </li>

@@ -21,9 +21,9 @@
                     <form id ="images" method="POST" action="{{ route("product_storePhotos") }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <p>Ten san pham <span>{{ $product->name }}</span></p>
-                            <p>ID san pham <span id="product_id">{{ $product->id }}</span></p>
-                            <p id="test1">{{ $product->id }}</p>
+                            <p>Tên sản phẩm <span>{{ $product->name }}</span></p>
+                            <p>ID sản phẩm <span id="product_id">{{ $product->id }}</span></p>
+                            <h3>Thêm Hình Ảnh Chi Tiết</h3>
                         </div>
                         <input type="text" hidden id="product" name="product_id">
                         <input type="file" id="files"class ="form-control" name="photos[]" multiple onchange="previewFile(this)">

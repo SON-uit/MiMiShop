@@ -32,34 +32,25 @@
                     <form method="POST"  action="{{ route("product_add") }}"  enctype="multipart/form-data" id="productform">
                         @csrf
                         <div class="form-group">
-                          <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Tên sản phẩm">
-                          <small id="helpId" class="form-text text-muted">Help text</small>
+                          <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Tên sản phẩm" required>         
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Mô tả sản phẩm">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
+                            <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId" placeholder="Mô tả sản phẩm" required>  
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" name="status" id="status" aria-describedby="helpId" placeholder="Tình trạng sản phẩm">
-                          <small id="helpId" class="form-text text-muted">Help text</small>
+                          <input type="text" class="form-control" name="status" id="status" aria-describedby="helpId" placeholder="Tình trạng sản phẩm" required>
                       </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId" placeholder="Giá sản phẩm">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
+                            <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId" placeholder="Giá sản phẩm" required>       
                         </div>
                         <div class="form-group">
-                           
-                            <input type="text" class="form-control" name="unit" id="unit" aria-describedby="helpId" placeholder="Đơn vị tính">
-                            <small id="helpId" class="form-text text-muted">Help text</small>
+                            <input type="text" class="form-control" name="unit" id="unit" aria-describedby="helpId" placeholder="Đơn vị tính" required>     
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" name="link" id="link" aria-describedby="helpId" placeholder="Link youtube của sản phẩm">
-                          <small id="helpId" class="form-text text-muted">Help text</small>
+                          <input type="text" class="form-control" name="link" id="link" aria-describedby="helpId" placeholder="Link youtube của sản phẩm" required>
                         </div>
-                        <div class="form-group">
-                          
-                          <input type="text" class="form-control" name="slug" id="slug" aria-describedby="helpId" placeholder="Slug">
-                          <small id="helpId" class="form-text text-muted">Help text</small>
+                        <div class="form-group">       
+                          <input type="text" class="form-control" name="slug" id="slug" aria-describedby="helpId" placeholder="Slug" required>
                         </div>
                         <div class="form-group">
                          <label for="classify">Choose classification</label>

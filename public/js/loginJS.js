@@ -17,11 +17,21 @@ Validator({
         dataType: "html",
         success: function (response) {
           if(response==true){
-            alert("Đăng nhập thành công");
+            swal({
+            icon: 'success',
+            title: 'Chúc mừng!!',
+            text: "Đăng nhập thành công !!",
+            button: "OK",
+          }).then(function(){
             window.location.reload();
+          });
           }else{
-            alert("Đăng nhập thất bại");
-            window.location.reload();
+            swal({
+              icon: 'error',
+              title: 'Thất bại!',
+              text: " Vui lòng kiểm tra tài khoản hoặc mật khẩu!!",
+              button: "OK",
+            });
           }
         }
       });

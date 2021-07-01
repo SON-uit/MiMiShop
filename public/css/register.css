@@ -11,7 +11,9 @@
 .heading-register{
     font-size: 54px;
     font-weight: 700;
+    text-decoration: underline;
     line-height: initial;
     position: absolute;
     left: 25%;
+    top:25%;
 }  

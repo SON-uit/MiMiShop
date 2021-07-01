@@ -3,6 +3,18 @@
 @section('register')
   <meta name="csrf-token" content="{{ csrf_token() }}" >
   <link rel ="stylesheet" href={{ URL::asset('css/register.css') }}>
+  @if(Session::has('register')!=null)
+    <script>
+         swal({
+            icon: 'success',
+            title: 'Chúc mừng !!',
+            text: "{!! Session::get('register') !!}",
+            button: "OK",
+          }).then(function(){
+            location.href ="http://localhost/webshop/public/mainView";
+          });
+    </script>
+  @endif
   <section>
     <div class="container-fluid">
       <div class="row">
@@ -10,9 +22,6 @@
             <h1 class="heading-register" >Tạo Tài Khoản</h1>
         </div>
         <div class="col-md-4 offset-md-1 ">
-          <div class="alert alert-success hiden" style="display: none">
-              <p id="success"></p>
-          </div>
             <form method="POST"  action=" {{ route("check_register") }}"  id="register-form">
               <div class="form-group">
                 <label for="fullname">Họ tên</label>
