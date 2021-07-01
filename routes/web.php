@@ -70,17 +70,18 @@ Route::post('check/checkout',[CartController::class,'check_checkout'])->name('ch
 // Autocomplete Typehead
 Route::get('autocomplete',[ProductController::class,'autocomplete'])->name('autocomplete');
 Route::get('product/{slug}',[ProductController::class,'slugView'])->name('product/{slug}');
-// Images
+// price classify
 Route::get('price-classify',[ProductController::class,'classify'])->name('classify');
 // search
 Route::get('searchProduct',[ProductController::class,'searchProduct'])->name('searchProduct');
+// collection ps5
 Route::get('collection/may-ps-5',function(){
     $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
                                  ->where([
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"máy"]
                                  ])
-                                 ->select('products.*')
+                                 ->select('products.*','type_products.name as type')
                                  ->get();
     $img = 'may-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));
@@ -91,7 +92,7 @@ Route::get('collection/game-ps-5',function(){
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"game"]
                                  ])
-                                 ->select('products.*')
+                                 ->select('products.*','type_products.name as type')
                                  ->get();
     $img = 'game-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));
@@ -103,7 +104,65 @@ Route::get('collection/phukien-ps-5',function(){
                                      ['type_products.name',"PlayStation5"],
                                      ['products.classification',"phụ kiện"]
                                  ])
-                                 ->select('products.*',)
+                                 ->select('products.*','type_products.name as type')
+                                 ->get();
+    $img ='phukien-ps-5.jpg';
+    return view('typeproductDetails',compact('data','img'));  
+});
+//collecttion ps4
+Route::get('collection/may-ps-4',function(){
+    $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                 ->where([
+                                     ['type_products.name',"PlayStation4"],
+                                     ['products.classification',"máy"]
+                                 ])
+                                 ->select('products.*','type_products.name as type')
+                                 ->get();
+    $img ='phukien-ps-5.jpg';
+    return view('typeproductDetails',compact('data','img'));  
+   
+});
+Route::get('collection/game-ps-4',function(){
+    $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                 ->where([
+                                     ['type_products.name',"PlayStation4"],
+                                     ['products.classification',"game"]
+                                 ])
+                                 ->select('products.*','type_products.name as type')
+                                 ->get();
+    $img ='phukien-ps-5.jpg';
+    return view('typeproductDetails',compact('data','img'));  
+});
+Route::get('collection/phukien-ps-4',function(){
+    $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                 ->where([
+                                     ['type_products.name',"PlayStation4"],
+                                     ['products.classification',"phụ kiện"]
+                                 ])
+                                 ->select('products.*','type_products.name as type')
+                                 ->get();
+    $img ='phukien-ps-5.jpg';
+    return view('typeproductDetails',compact('data','img'));  
+});
+// collection switch
+Route::get('collection/may-switch',function(){
+    $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                 ->where([
+                                     ['type_products.name',"Switch"],
+                                     ['products.classification',"máý"]
+                                 ])
+                                 ->select('products.*','type_products.name as type')
+                                 ->get();
+    $img ='phukien-ps-5.jpg';
+    return view('typeproductDetails',compact('data','img'));  
+});
+Route::get('collection/game-switch',function(){
+    $data = DB::table('products')->join('type_products','products.id_type','=','type_products.id')
+                                 ->where([
+                                     ['type_products.name',"Switch"],
+                                     ['products.classification',"game"]
+                                 ])
+                                 ->select('products.*','type_products.name as type')
                                  ->get();
     $img ='phukien-ps-5.jpg';
     return view('typeproductDetails',compact('data','img'));  

@@ -9,21 +9,24 @@ $(document).ready(function () {
             temp.max='1000000000';
             categories.push(temp);
         }
+        //loai san pham (May,Game,Phu Kien)
         let typeproduct = $("#type").attr("value");
+        // loai san pham(PS4,PS4,Switch)
+        let type =$("#type").data('type');
         $('input[name="price-classify[]"]:checked').each(function(){
             let temp ={};
             temp.min=($(this).attr('data-min'));
             temp.max=($(this).attr('data-max'));
             categories.push(temp);
+            console.log(categories);
         })
-        $.get("http://localhost/webshop/public/price-classify", {categories:categories,type:typeproduct},
+        $.get("http://localhost/webshop/public/price-classify", {categories:categories,classify:typeproduct,type:type},
             function (data) {
                  if(data ==='1'){
                     $(".pricesort").empty(); 
                     let createP = $("<h4></h4>").text("Không tìm thấy kết quả").appendTo('.pricesort').css('margin-left','30px');
                 }else{
                  $(".pricesort").empty();   
-                 
                 for(let items of data){
                     let currency =(new Intl.NumberFormat('en-US').format(items.price));
                     let divpos = $("<div class='col-md-3'></div>").appendTo(".pricesort");
@@ -48,6 +51,5 @@ $(document).ready(function () {
             }
         }, 
         ); 
-        
     });
 });

@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-8 " >
                 <div class="col-md-12 ">
-                    <h2 id="type" value={{( $data[0]->classification )}}>{{ Str::upper( $data[0]->classification )}}<span> PS5</span></h2>
+                    <h2 id="type" value={{( $data[0]->classification )}} data-type={{ $data[0]->type }}>{{ Str::upper( $data[0]->classification )}}<span> {{ Str::upper($data[0]->type) }}</span></h2>
                 </div>
                 <div class="row pricesort">
                     @foreach ($data as $item)

@@ -22,7 +22,7 @@ class UserController extends Controller
         $user->birthDay = $input['date'];
         $user->password = password_hash($input['password'],PASSWORD_BCRYPT);//ma hoa password;
         $user->save();
-        return 'Đăng kí thành công';
+        return back()->with('register','Đăng kí tài khoản thành công');
     }
     public function login(){
         return view('login');

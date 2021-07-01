@@ -8,13 +8,27 @@
     <link rel ="stylesheet"  href="{{ URL::asset('css/Paycart.css') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
+    @if(Session::has('bill')!=null)
+      <script>
+          swal({
+          icon: 'success',
+          title: 'Congratulation!!',
+          text: "{!! Session::get('bill') !!}",
+          button: "OK",
+        });
+      </script>
+      @php 
+        Session::forget('bill')
+      @endphp
+    @endif
       <div class="container-fluid">
           <div class="row">
             <div class="col-md-2 mt-4" >
               <a href="http://localhost/webshop/public/mainView"><h3><span class="arrow arrowRight"></span>BACK</h3></a>
-          </div>
+            </div>
           </div>
           <div class="row">
               <div class="col-md-5 offset-md-2 leftbox">
@@ -33,24 +47,19 @@
                   <h4>Thông tin thanh toán</h4><br>
                     <div class="PayMent">
                         <form method="POST" action="{{ route("check_checkout") }}">
-                          @if(Session::has('bill'))
-                          <div class="alert alert-primary" role="alert">
-                              <strong>{{ Session::get('bill') }}</strong>
-                          </div>
-                          @endif
                           @csrf
                             <div class="form-group">
-                              <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Họ và tên">
+                              <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="Họ và tên" required>
                             </div>
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                      <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Email">
+                                      <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                      <input type="text" class="form-control" name="phonenumber" id="phonenumber" aria-describedby="helpId" placeholder="Số điện thoại">
+                                      <input type="text" class="form-control" name="phonenumber" id="phonenumber" aria-describedby="helpId" placeholder="Số điện thoại" required>
                                     </div>
                                 </div>
                             </div>
@@ -58,12 +67,12 @@
                                 <label for="pay-method">Phương thức thanh toán</label>
                                 <select class="form-control" name="payment" id="pay-method">
                                   <option>Chọn phương thức thanh toán</option>
-                                  <option value="live">Trực tiếp</option>
-                                  <option value ="transfer">Chuyển khoản</option>
+                                  <option value="COD">Trực tiếp</option>
+                                  <option value ="Banking">Chuyển khoản</option>
                                 </select>
                               </div>
                             <div class="form-group">
-                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" placeholder="Đia chỉ">
+                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" placeholder="Đia chỉ" required>
                             </div>
                             <input type="submit" class="btn btn-outline-primary" value="Thanh toán">
                         </form>
@@ -97,6 +106,7 @@
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
