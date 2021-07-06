@@ -7,6 +7,7 @@ use App\Http\Controllers\typeProductsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Collection;
+use App\Http\Controllers\orderController;
 use App\Models\product;
 use App\Models\type_product;
 use App\Models\type_products;
@@ -33,7 +34,7 @@ Route::get('baseView',[mainController::class,'baseView'])->name('base_view');
 Route::get('mainView',[mainController::class,'mainView'])->name('main_view');
 //user
 Route::get('register',[UserController::class,'register'])->name('register');
-Route::post('check/register',[UserController::class,'Store_register'])->name ('check_register');
+Route::post('check/register',[UserController::class,'Store_register'])->name('check_register');
 Route::get('login',[UserController::class,'login'])->name('login');
 Route::post('check/login',[UserController::class,'check_login'])->name('check_login');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
@@ -118,7 +119,7 @@ Route::get('collection/may-ps-4',function(){
                                  ])
                                  ->select('products.*','type_products.name as type')
                                  ->get();
-    $img ='phukien-ps-5.jpg';
+    $img ='type_products/may-ps4.jpg';
     return view('typeproductDetails',compact('data','img'));  
    
 });
@@ -153,7 +154,7 @@ Route::get('collection/may-switch',function(){
                                  ])
                                  ->select('products.*','type_products.name as type')
                                  ->get();
-    $img ='phukien-ps-5.jpg';
+    $img ='type_products/may-switch.jpg';
     return view('typeproductDetails',compact('data','img'));  
 });
 Route::get('collection/game-switch',function(){
@@ -174,3 +175,6 @@ Route::get('barChart',[mainController::class,'barChartData']);
 Route::get('showBarChart',[mainController::class,'showBarChart']);
 Route::get('pieChart',[mainController::class,'pieChartData']);
 Route::get('showPieChart',[mainController::class,'showPieChart']);
+//bills
+Route::get('admin/orderlist',[orderController::class,'listUser'])->name('listUser');
+Route::get('admin/bill_details/{id}',[orderController::class,'billDetails'])->name('billDetails');

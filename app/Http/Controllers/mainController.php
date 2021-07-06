@@ -35,10 +35,10 @@ class mainController extends Controller
         return $bestseller;
     }
     //bestSeller Product Query
-    public function bestsellerProduct1(Request $request){
+   /*  public function bestsellerProduct1(Request $request){
         $newProduct = product::where('status','new')->limit(3)->get();
         return $newProduct;
-    }
+    } */
     // Query of BarChart Data
     public function barChartData(){
         $data = DB::select('SELECT month(created_at) as month , SUM(total) as revenue  FROM bills GROUP BY month(created_at)');

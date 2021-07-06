@@ -71,6 +71,7 @@ class CartController extends Controller
         return View('PayCart');
     }
     public function check_checkout(Request $request){
+        dd($request);
         $customer = DB::table('users')->select('id')->where('email',$request->email)->get();
         $customer = User::select('id')->where('email',$request->email)->first();
         $newbill = new bill();

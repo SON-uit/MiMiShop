@@ -25,7 +25,7 @@
                             <p>ID sản phẩm <span id="product_id">{{ $product->id }}</span></p>
                             <h3>Thêm Hình Ảnh Chi Tiết</h3>
                         </div>
-                        <input type="text" hidden id="product" name="product_id">
+                        <input type="number" name="product_id" value={{ $product->id }} hidden>
                         <input type="file" id="files"class ="form-control" name="photos[]" multiple onchange="previewFile(this)">
                         <input type="submit" class="btn btn-primary" value="Upload">  
                         <div id="showImg"></div>  

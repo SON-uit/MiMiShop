@@ -159,7 +159,7 @@
                             </div>
                                 <div class="thanhtoan">
                                  <a  href="http://localhost/webshop/public/ListCart" class="btn">XEM GIỎ HÀNG</a>
-                                 <a href="http://localhost/webshop/public/checkout" class="btn">THANH TOÁN</a>
+                                 <a href="http://localhost/webshop/public/checkout" class="btn">ĐẶT HÀNG</a>
                                 </div>
                            </div>
                            </div>
@@ -181,7 +181,7 @@
                             <div class="footer-cart">
                                 <div class="thanhtoan">
                                     <a href="http://localhost/webshop/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
-                                    <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">Thanh toán</a>
+                                    <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">ĐẶT HÀNG</a>
                                 </div>
                             </div>
                         </div>
@@ -202,12 +202,12 @@
                                <div class="form-group">
                                  <label for="">Email</label>
                                  <input type="text" name="email" id="email" class="form-control" placeholder="Email" aria-describedby="helpId">
-                                 <small id="form-message" class="text-muted"></small>
+                                 <small id="form-message" style="color:red"></small>
                                </div>
                                <div class="form-group">
                                  <label for="">Mật Khẩu</label>
                                  <input type="password" name="password" id="password" class="form-control" placeholder="Mật Khẩu" aria-describedby="helpId">
-                                 <small id="form-message" class="text-muted"></small>
+                                 <small id="form-message" style="color: red"></small>
                                </div>
                                <button type="submit" class="btn btn-outline-primary">Đăng Nhập</button>
                            </form>
