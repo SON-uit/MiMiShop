@@ -66,7 +66,7 @@
                                 <p class="card-text">Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
                             </div>
                             <div class="card-footer">
-                                <a href="http://localhost/webshop/public/checkout"><button class="btn btn-danger">Thanh Toán</button></a>
+                                <a href="http://localhost/webshop/public/checkout"><button class="btn btn-danger">ĐẶT HÀNG</button></a>
                                 <a href="http://localhost/webshop/public/mainView">Tiếp tục mua hàng</a>
                             </div>
                         </div>

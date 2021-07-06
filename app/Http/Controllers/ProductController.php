@@ -67,7 +67,6 @@ class ProductController extends Controller
         return view('CRUD_product/addPhotos',compact('product'));
     }
     public function storePhotos(Request $request){
-      
         $product = product::find($request->product_id);
         $files =$request->file('photos');
          if($request->hasfile('photos')){
@@ -98,7 +97,6 @@ class ProductController extends Controller
             return view('productDetails',compact('product','photos'));
     }
     public function classify(Request $request){
-        
         $temp = $request->categories;
         $classify = $request->classify;
         $type= $request->type;

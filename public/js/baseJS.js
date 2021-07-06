@@ -70,6 +70,11 @@ $(document).ready(function () {
         }
     })
 });
+$(document).ready(function () {
+    if($('.body-cart').height() > 300){
+        $('.body-cart').css({'height':'300','overflow-y':'scroll','overflow-x':'hidden'});
+    }
+});
 
 
 

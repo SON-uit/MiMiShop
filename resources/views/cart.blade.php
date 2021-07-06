@@ -64,7 +64,7 @@
             <div class="footer-cart">
                 <div class="thanhtoan">
                     <a href="http://localhost/webshop/public/ListCart" class="btn btn-primary">Xem giỏ hàng</a>
-                    <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">Thanh toán</a>
+                    <a href="http://localhost/webshop/public/checkout" class="btn btn-primary">ĐẶT HÀNG</a>
                 </div>
             </div>
         </div>

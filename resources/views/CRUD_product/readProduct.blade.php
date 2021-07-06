@@ -26,19 +26,20 @@
                             <strong>{{ Session::get('product_delete') }}</strong>
                         </div>
                     @endif
+                    <a href="http://localhost/webshop/public/admin/product/create"><button class="btn btn-primary">THÊM SẢN PHẨM MỚI</button></a><br><br>
+                    <a href="http://localhost/webshop/public/admin/orderlist"><button class="btn btn-success">Hóa Đơn Đặt Hàng</button></a><br><br>
+                    <div class="btn-group dropright">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Thống kê
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="http://localhost/webshop/public/showBarChart"><button class="btn btn-light">Doanh thu</button></a>
+                            <a href="http://localhost/webshop/public/showPieChart"><button class="btn btn-light">Số sản phẩm</button></a>
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-header">
-                            <p>DANH SÁCH CÁC SẢN PHẨM</p>
-                            <a href="http://localhost/webshop/public/admin/product/create"><button class="btn btn-primary">THÊM SẢN PHẨM MỚI</button></a>
-                            <div class="btn-group dropright">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Thống kê
-                                </button>
-                                <div class="dropdown-menu">
-                                   <a href="http://localhost/webshop/public/showBarChart"><button class="btn btn-light">Doanh thu</button></a>
-                                   <a href="http://localhost/webshop/public/showPieChart"><button class="btn btn-light">Số sản phẩm</button></a>
-                                </div>
-                              </div>
+                            <h4 class="text-center">DANH SÁCH CÁC SẢN PHẨM</h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">

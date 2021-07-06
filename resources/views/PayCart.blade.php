@@ -74,7 +74,7 @@
                             <div class="form-group">
                               <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" placeholder="Đia chỉ" required>
                             </div>
-                            <input type="submit" class="btn btn-outline-primary" value="Thanh toán">
+                            <input type="submit" class="btn btn-outline-primary" value="ĐẶT HÀNG">
                         </form>
                     </div>
               </div>
